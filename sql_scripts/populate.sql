@@ -1,3 +1,4 @@
+USE ratings;
 INSERT INTO ratings(name, rating, region) VALUES("Laurenz V Charming Gruner Veltliner 2013", "90.0", "Kamptal, Austria");
 INSERT INTO ratings(name, rating, region) VALUES("Laurenz V Charming Gruner Veltliner 2014", "90.0", "Kamptal, Austria");
 INSERT INTO ratings(name, rating, region) VALUES("Laurenz V Singing Gruner Veltliner 2007", "90.0", "Austria");
