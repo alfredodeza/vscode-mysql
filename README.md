@@ -43,4 +43,46 @@ SELECT * from user;
 
 Next, _do not_ click on the _Run_ button. Use the command palette from VSCode to find the _MYSQL: Run MYSql query_ entry. You should get a new pane with results.
 
+Now it is time to run other queries and create a real database with a useful dataset. In VSCode, on the left side bar, find and click the _Source Control_ section to clone a new repository. When prompted use `https://github.com/alfredodeza/vscode-mysql.git` to clone this repo into the lab.
 
+After cloning, open the _sql_scripts_ directory and click on _setup.sql_. That SQL script creates the database and sets up the required table to populate the data. Use the same technique as before to execute the query with the command palette. If the output shows, it should be similar to:
+
+```
+[Start] Executing MySQL query...
+[Done] Finished MySQL query.
+```
+
+With the table created, you can populate it with the rest of the data in the _populate.sql_. Use the same process as before to execute the query.
+
+Verify that your data exists in the table and _ratings_ database by running a `SELECT` statement:
+
+```sql
+SELECT * from ratings LIMIT 100;
+```
+
+This query is also available in the _sql_script_ directory. Do some data exploration to check the data and get familar with the type of contents you are going to be working with.
+
+## Exporting to CSV
+
+There are several ways to export data. You can use the power of SQL to create a new script and export the fields and data you need into a CSV file.
+
+Find the _export_csv.sql_ file in the _sql_script_ directory and execute it against the database.
+
+What happens if you run it more than once?
+
+Try changing the script to create a CSV file with only the names and ratings instead of including the region.
+
+
+## Exporting as SQL
+
+Different databases have their own ways of exporting data. In MySQL databases you can use the `mysqldump` utility to export data. Open up a terminal and run the following command:
+
+```
+$ mysqldump -u root -p ratings > vscode-mysql/export.sql
+```
+
+Remember that the coursera database doesn't have a password for the `root` user. In a real-life scenario, you would have to type a password and perhaps use a specific user instead of using `root`.
+
+Inspect the _export.sql_ file and check its contents. You can use this same file to load data elsewhere. This operation is useful if you are migrating to and from databases or to create a backup.
+
+Note that the SQL file also has instructions on how to re-create the table and database itself, not only the actual data.
